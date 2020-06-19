@@ -282,6 +282,11 @@ p {
     z-index: 1;
 }
 
+.txt_box_l {
+    flex: 0 0 70%;
+}
+
+
 .flex_scr {
   flex: 1 1 35%;
 }
@@ -302,7 +307,7 @@ p {
     flex: 1 1 10%;
 }
 .txt_l2_m {
-    flex: 1 0 25%;
+    flex: 1 0 20%;
 }
 
 .content3_wrap {
@@ -433,7 +438,7 @@ p {
 /*Пятый слайдер и его наполнение*/
 
 .content6_wrap {
-  flex: 0 0 60%;
+  flex: 0 0 55%;
   position: relative;
   background: url('./img/scr4.png') bottom right / 100% 100% no-repeat;
   display: flex;
@@ -445,7 +450,7 @@ p {
   position: absolute;
 /*  transform: translatex(230px);*/
   z-index: -1;
-  background: url('./img/scr_story.png') 50% 50% / auto 100% no-repeat;
+  background: url('./img/scr_story.png') 60% 50% / auto 100% no-repeat;
 }
 
 /*Шестой слайдер и его наполнение*/
@@ -486,17 +491,20 @@ p {
 
 @media screen and (max-device-aspect-ratio: 4/3){
 .content4_wrap {
-  flex: 0 0 86%;
+  flex: 0 0 90%;
 }
 .txt_box_m {
-    flex: 0 0 50%;
+    flex: 0 0 46%;
 }
 .txt_l2 {
     flex: 1 0 32%;
 }
+.txt_l2_m {
+    flex: 1 0 20%;
 }
-
-@media (max-width: 1280px) {
+.txt_r_m {
+    flex: 1 0 30%;
+}
 .content7_neon {
   background: url('./img/scr_str.png')  0% 110% / auto 55% no-repeat;
 }
@@ -504,6 +512,15 @@ p {
   background: url('./img/scr5.png') 0% 0% / auto 110% no-repeat;
 }
 }
+
+/*@media (max-width: 1280px) {
+.content7_neon {
+  background: url('./img/scr_str.png')  0% 110% / auto 55% no-repeat;
+}
+.content7_wrap {
+  background: url('./img/scr5.png') 0% 0% / auto 110% no-repeat;
+}
+}*/
 
 .postContent {
   display: none;
@@ -600,9 +617,9 @@ p {
 .txt_l_m {
     flex: 0 0 15%;
 }
-.txt_l2_m {
+/*.txt_l2_m {
     flex: 1 1 20%;
-}
+}*/
 
 /*.flex_txt {
     flex: 1 1 10%;
