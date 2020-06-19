@@ -122,7 +122,7 @@ var $window = $(window);
 
 	function onBurgerClick(event){
 	    $('.burger-icon, .header__menu2').each(function(){
-	    	$(this).toggleClass('activeOn')});
+	    	$(this).toggleClass('active_burg')});
 	    $('body').toggleClass('lock');
 		}
 
