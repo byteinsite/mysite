@@ -107,18 +107,30 @@ var $window = $(window);
 	$window.on("resize", onResize).resize();
 	$window.on("mousewheel DOMMouseScroll", onMouseWheel);
 	$document.on("keydown", onKeyDown);
-	$burger.on("click", onBurgerClick);
-	$burger.swipe({
-		tap:onBurgerClick  
+		if (isMobile()){
+		$burger.swipe({
+			tap:onBurgerClick  
     	});
 
-	$window.swipe( {
-        swipe:onSwipe
+		$window.swipe( {
+        	swipe:onSwipe
      	});
+	} else {
+		$burger.on("click", onBurgerClick);
+	}
   
-  /*
-	*   Internal functions
-	* */
+//================= проверка мобильного устройства =================
+function isMobile() {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+          return true; 
+    }
+    return false;
+}
+
+//===================================================================
+
+// ================ Internal functions ==========================
+
 
 	function onBurgerClick(event){
 	    $('.burger-icon, .header__menu2').each(function(){
