@@ -17,7 +17,7 @@ body {
 }
 
 body::-webkit-scrollbar { width: 0; }
-overscroll-behavior: contain
+overscroll-behavior: contain;
 
 h1,h2 {
   margin: 0;
