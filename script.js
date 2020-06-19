@@ -1,58 +1,4 @@
 
-$(function () {
-	var controller = new ScrollMagic.Controller();
-
-	var tween = TweenMax.to("#label_1", 1, {className: "+=label"});
-	var tween2 = new TimelineLite().from(".container_H2", 0.3, { scaleX: 0 })
-					.from("#label_2", 0.65, { yPercent: 100, ease: Back.easeOut })
-					.to(".border_bottom2", 0.2, { scaleX: 0 })
-					.from(".container_H3", 0.3, { scaleX: 0 })
-					.from("#label_3", 0.65, { yPercent: 100, ease: Back.easeOut })
-					.to(".border_bottom3", 0.2, { scaleX: 0 });
-	// var tween3 = new TimelineMax().from(".container_H3", 0.3, { scaleX: 0 })
-	// 				.from("#label_3", 0.65, { yPercent: 100, ease: Back.easeOut })
-	// 				.to(".border_bottom3", 0.2, { scaleX: 0 });
-
-	// build scene
-	var scene = new ScrollMagic.Scene({triggerElement: ".main_content1", duration: '35%', triggerHook: 'onLeave'})
-					.setTween(tween)
-					.addTo(controller);
-
-	var scene2 = new ScrollMagic.Scene({triggerElement: ".container_H2", triggerHook: 0.5})
-					.setTween(tween2)
-					.addTo(controller);
-
-	// var scene3 = new ScrollMagic.Scene({triggerElement: ".container_H3", triggerHook: 0.5})
-	// 				.setTween(tween3)
-	// 				.addTo(controller);
-});
-
-
-//==================== Parallax Mounts =====================
-
-$(function () {
-	var controller = new ScrollMagic.Controller();
-
-	var tween = TweenMax.to(".paralax_mount1", 1, {x: '-6%', scale: 4});
-	var tween2 = TweenMax.to(".paralax_mount2", 1, {x: '6%', scale: 4});
-	var tween3 = TweenMax.to(".paralax_mount3", 1, {y: '80%', scale: 2});
-
-	// build scene
-	var scene = new ScrollMagic.Scene({triggerElement: ".main_content1", duration: '100%', triggerHook: 0})
-					.setTween(tween)
-					.addTo(controller);
-
-	var scene2 = new ScrollMagic.Scene({triggerElement: ".main_content1", duration: '100%', triggerHook: 0})
-					.setTween(tween2)
-					.addTo(controller);
-
-	var scene2 = new ScrollMagic.Scene({triggerElement: ".main_content1", duration: '100%', triggerHook: 0})
-					.setTween(tween3)
-					.addTo(controller);
-});
-
-// ======================СВАЙП СЛАЙДОВ СО СТОРОНЫ===========
-
 
 //==================== СВАЙП СЛАЙДОВ V3 =======================
 
@@ -80,77 +26,74 @@ var $window = $(window);
   var currentIndex = 0;
   
   var timeline0 = new TimelineLite()
-
+  	.from("#label_1", 1, {yPercent: -100, scale: 0.1})
+  	.from(".paralax_mount1", 1, {x: '-10%', scale: 4}, "-=1")
+  	.from(".paralax_mount2", 1, {x: '10%', scale: 4}, "-=1")
+	.from(".paralax_mount3", 1, {y: '100%', scale: 2}, "-=1")
 	.reverse();
 
   var timeline1 = new TimelineLite()
-
+	.from(".container_H2", 0.3, { scaleX: 0 })
+	.from("#label_2", 0.6, { yPercent: 100, ease: Back.easeOut })
+	.to(".border_bottom2", 0.2, { scaleX: 0 })
+	.from(".container_H3", 0.3, { scaleX: 0 }, "-=0.3")
+	.from("#label_3", 0.6, { yPercent: 100, ease: Back.easeOut })
+	.to(".border_bottom3", 0.2, { scaleX: 0 })
 	.reverse();
 
   var timeline2 = new TimelineLite()
 	.fromTo("#slide3", 0.5, {xPercent: 100}, {xPercent: 0, ease: Linear.easeNone})
-	.from(".content3_neon1", 0.5, {x: 100, y: 100, scaleX: 0, rotation: 90, ease: Back.easeOut}, "-=0.2")
+	.from(".content3_neon1", 0.5, {x: 100, y: 100, scaleX: 0, rotation: 90, ease: Back.easeOut})
 	.fromTo(".content3_neon1", 0.01, {x:-2}, {x:2, clearProps:"x", repeat:20})
 	.fromTo(".content3_neon1", 0.01, {opacity: 1}, {opacity: 0.7, clearProps:"opacity", repeat:20}, "-=0.01")
 	.from(".title_color1", 0.4, {opacity: 0, scaleX: 4, scaleY: 2, zPercent: 50, ease: Bounce.easeOut}, "-=0.5")
-	.from("#content3 .txt_box p", 0.5, {skewX: -85, xPercent: 300, ease: Back.easeOut}, "-=0.4")
+	.from("#slide3 .txt_box p", 0.5, {skewX: -85, xPercent: 300, ease: Back.easeOut}, "-=0.4")
     .reverse();
 
-	// $(".againPIN").on("click", function() {
-	// 	timeline2.restart();
-	// });	
 	
   
   var timeline3 = new TimelineLite()//{repeat:-1, yoyo: true,  repeatDelay:0.5}
  	.fromTo("#slide4", 0.5, {xPercent: -100}, {xPercent: 0, ease: Linear.easeNone})
- 	.from(".content4_neon2", 0.5, {xPercent: -100, rotation: -360, ease: Back.easeOut}, "-=0.2")
+ 	.from(".content4_neon2", 0.5, {xPercent: -100, rotation: -360, ease: Back.easeOut})
  	.fromTo(".content4_neon2", 0.01, {x:-2}, {x:2, clearProps:"x", repeat:20})
 	.fromTo(".content4_neon2", 0.01, {opacity: 1}, {opacity: 0.7, clearProps:"opacity", repeat:20}, "-=0.01")
-	.from(".title_color2", 0.5, {yPercent: -100, rotationX: 360, scale: 0.5, zPercent: 50, ease: Bounce.easeOut}, "-=0.5")
-	.from("#content4 .txt_box_l p", 0.5, {skewX: 85, xPercent: -300, ease: Back.easeOut}, "-=0.4")
+	.from(".title_color2", 0.5, {opacity: 0, yPercent: -100, rotationX: 360, scale: 0.5, zPercent: 50, ease: Bounce.easeOut}, "-=0.5")
+	.from("#slide4 .txt_box_l p", 0.5, {skewX: 85, xPercent: -300, ease: Back.easeOut}, "-=0.4")
     .reverse();
 	
-	// $(".againME").on("click", function() {
-	// 	timeline3.restart();
-	// });	
 
 	
 	var timeline4 = new TimelineLite()
  	.fromTo("#slide5", 0.5, {xPercent:  100}, {xPercent: 0, ease: Linear.easeNone})
- 	.from(".content5_neon", 0.5, {x: 100, y: 100, scaleX: 0, rotation: 90, ease: Back.easeOut}, "-=0.2")
+ 	.from(".content5_neon", 0.5, {x: 100, y: 100, scaleX: 0, rotation: 90, ease: Back.easeOut})
  	.fromTo(".content5_neon", 0.01, {x:-2}, {x:2, clearProps:"x", repeat:20})
 	.fromTo(".content5_neon", 0.01, {opacity: 1}, {opacity: 0.7, clearProps:"opacity", repeat:20}, "-=0.01")
 	.from(".title_color3", 0.5, {yPercent: -100, scaleX: 2, scaleY: 0, zPercent: 50, ease: Bounce.easeOut}, "-=0.5")
-	.from("#content5 .txt_box p", 0.5, {skewX: -85, xPercent: 300, ease: Back.easeOut}, "-=0.4")
+	.from("#slide5 .txt_box p", 0.5, {skewX: -85, xPercent: 300, ease: Back.easeOut}, "-=0.4")
     .reverse();
-
-	// $(".againGreenAttack").on("click", function() {
-	// 	timeline4.restart();
-	// });	
+	
 	
   var timeline5 = new TimelineLite()
  	.fromTo("#slide6", 0.5, {xPercent:  -100}, {xPercent: 0, ease: Linear.easeNone})
- 	.from(".content6_neon", 0.5, {xPercent: -100, rotation: -360, ease: Back.easeOut}, "-=0.2")
+ 	.from(".content6_neon", 0.5, {xPercent: -100, rotation: -360, ease: Back.easeOut})
 	.fromTo(".content6_neon", 0.01, {x:-2}, {x:2, clearProps:"x", repeat:20})
 	.fromTo(".content6_neon", 0.01, {opacity: 1}, {opacity: 0.7, clearProps:"opacity", repeat:20}, "-=0.01")
-	.from(".title_color4", 0.5, {yPercent: -100, rotationX: 360, scale: 0.5, zPercent: 50, ease: Bounce.easeOut}, "-=0.5")
-	.from("#content6 .txt_box_l p", 0.5, {skewX: 85, xPercent: -300, ease: Back.easeOut}, "-=0.4")
+	.from(".title_color4", 0.5, {opacity: 0, yPercent: -100, rotationX: 360, scale: 0.5, zPercent: 50, ease: Bounce.easeOut}, "-=0.5")
+	.from("#slide6 .txt_box_l p", 0.5, {skewX: 85, xPercent: -300, ease: Back.easeOut}, "-=0.4")
     .reverse();
 
-	// $(".againHELMUT").on("click", function() {
-	// 	timeline5.restart();
-	// });	 
+	 
   var timeline6 = new TimelineLite()
  	.fromTo("#slide7", 0.5, {xPercent:  100}, {xPercent: 0, ease: Linear.easeNone})
- 	.from(".content7_neon", 0.5, {x: 100, y: 100, scaleX: 0, rotation: 90, ease: Back.easeOut}, "-=0.2")
+ 	.from(".content7_neon", 0.5, {x: 100, y: 100, scaleX: 0, rotation: 90, ease: Back.easeOut})
  	.fromTo(".content7_neon", 0.01, {x:-2}, {x:2, clearProps:"x", repeat:20})
 	.fromTo(".content7_neon", 0.01, {opacity: 1}, {opacity: 0.7, clearProps:"opacity", repeat:20}, "-=0.01")
 	.from(".title_color5", 0.5, {yPercent: -100, scaleX: 2, scaleY: 0, zPercent: 50, ease: Bounce.easeOut}, "-=0.5")
-	.from("#content7 .txt_box p", 0.5, {skewX: -85, xPercent: 300, ease: Back.easeOut}, "-=0.4")
+	.from("#slide7 .txt_box p", 0.5, {skewX: -85, xPercent: 300, ease: Back.easeOut}, "-=0.4")
     .reverse();
 
 	
-  var timelines = [timeline1, timeline1, timeline2, timeline3, timeline4, timeline5, timeline6];
+  var timelines = [timeline0, timeline1, timeline2, timeline3, timeline4, timeline5, timeline6];
 
   //Going to the first slide
   goToSlide($currentSlide);
@@ -165,26 +108,25 @@ var $window = $(window);
 	$window.on("mousewheel DOMMouseScroll", onMouseWheel);
 	$document.on("keydown", onKeyDown);
 	$burger.on("click", onBurgerClick);
-	// $navButtons.on("click", onNavButtonClick);
-	// $navGoPrev.on("click", goToPrevSlide);
-	// $navGoNext.on("click", goToNextSlide);
+	$burger.swipe({
+		tap:onBurgerClick  
+    	});
+
 	$window.swipe( {
-        //Generic swipe handler for all directions
-        swipe:onSwipe,
-        //Default is 75px, set to 0 for demo so any distance triggers swipe
-         threshold:0
+        swipe:onSwipe
      	});
   
   /*
 	*   Internal functions
 	* */
+
 	function onBurgerClick(event){
-		console.log('click');
 	    $('.burger-icon, .header__menu2').each(function(){
-	    	$(this).toggleClass('active_burg')});
+	    	$(this).toggleClass('activeOn')});
 	    $('body').toggleClass('lock');
 		}
-		
+
+
 	function onSwipe(event, direction){
           if (direction == "up"){
           	goToNextSlide();
@@ -234,7 +176,7 @@ var $window = $(window);
 	{
 		if($currentSlide.prev().length)
 			{
-			  goToSlide($currentSlide.prev(), "prev");
+			  goToSlide($currentSlide.prev());
 			}
 	}
 
@@ -245,7 +187,7 @@ var $window = $(window);
   {
     if($currentSlide.next().length)
     {
-      goToSlide($currentSlide.next(), "next");
+      goToSlide($currentSlide.next());
     }
   }
 
@@ -253,7 +195,7 @@ var $window = $(window);
   /*
 	*   Actual transition between slides
 	* */
-function goToSlide($slide, pn="next")
+function goToSlide($slide)
   {
     //If the slides are not changing and there's such a slide
     if(!isAnimating && $slide.length)
@@ -262,32 +204,23 @@ function goToSlide($slide, pn="next")
       isAnimating = true;
       $currentSlide = $slide;
       currentID = $currentSlide.attr('id');
-      NextSlide = $currentSlide.next();    
-      // console.log("print");
-      console.log(pn);
-      //Sliding to current slide
-      // if (pn == "next"){
+      NextSlide = $currentSlide.next();
+
       new TimelineLite()
-      .to($slidesContainer, 0.65, {onStart: onSlideChangeStart})
-      .to($slidesContainer, 0.7, {scrollTo: {y: pageHeight * $currentSlide.index() }, onComplete: onSlideChangeEnd, onCompleteScope: this});
-      // } else if (pn == "prev"){
-      // 	TweenLite.to($slidesContainer, 0.7, {scrollTo: {y: pageHeight * $currentSlide.index() }, onStart: onSlideChangeEnd, onCompleteScope: this});
-      // }
+      .to($slidesContainer, 0.7, {onStart: onSlideChangeStart})
+      .to($slidesContainer, 0.5, {scrollTo: {y: pageHeight * $currentSlide.index() }, onComplete: onSlideChangeEnd, onCompleteScope: this});
+
 
       //Definig slide status
       TweenLite.to($allSlides.filter(".active"), 0.1, {className: "-=active"});
       TweenLite.to($allSlides.filter($currentSlide), 0.1, {className: "+=active"});
 
-      //Animating menu items
-      // TweenLite.to($navButtons.filter(".active"), 0.5, {className: "-=active"});
-      // TweenLite.to($navButtons.filter("." + currentID), 0.5, {className: "+=active"});
-
     }
   }
 
   function onSlideChangeStart() {
-  	console.log(timelines[currentIndex].time());
-    timelines[currentIndex].reversed(true).timeScale(2);
+	console.log(currentIndex + " - " + timelines[currentIndex].time());
+	timelines[currentIndex].reversed(true).timeScale(2);
   }
   /*
 	*   Once the sliding is finished, we need to restore "isAnimating" flag.
@@ -297,13 +230,13 @@ function goToSlide($slide, pn="next")
     isAnimating = false;
     
     // Reverse the timeline for the previous slide
-    // timelines[currentIndex].reversed(true).progress(0);
     
     // Change the index
     currentIndex = $currentSlide.index();
-      	console.log("end-" + currentIndex);
+      	// console.log("end-" + currentIndex);
     // Play the timeline for the current slide
-    timelines[currentIndex].reversed(false);
+  		timelines[currentIndex].reversed(false);
+  		console.log(currentIndex + " - " + timelines[currentIndex].time());
   }
 
 
