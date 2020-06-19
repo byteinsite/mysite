@@ -14,10 +14,11 @@ body {
         color: white;
         -ms-overflow-style: none;
         overflow: -moz-scrollbars-none;
+        overscroll-behavior: contain
+        -webkit-scrollbar { width: 0; }
 }
 
-body::-webkit-scrollbar { width: 0; }
-overscroll-behavior: contain;
+/*body::-webkit-scrollbar { width: 0; }*/
 
 h1,h2 {
   margin: 0;
