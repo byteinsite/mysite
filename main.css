@@ -84,7 +84,7 @@ p {
   margin: 0 0 70px 0;
   font-size: calc(25px + 10 * ((100vw - 1024px) / (1920 - 1024)));
   color: black;
-  font-family: 'Ruslan Display', cursive;
+/*  font-family: 'Ruslan Display', cursive;*/
   text-align: justify;
   height: 50vh;
 /*  animation: bounce-in-right 1.1s both;*/
