@@ -21,7 +21,7 @@ body {
 /*body::-webkit-scrollbar { width: 0; }*/
 
 h1,h2 {
-  margin: 0;
+  margin: 10% 0 0 0;
   font-family: 'Oswald', sans-serif;
 }
 
@@ -616,6 +616,9 @@ p {
 
 .txt_l_m {
     flex: 0 0 15%;
+}
+.txt_box_l {
+    flex: 0 0 60%;
 }
 /*.txt_l2_m {
     flex: 1 1 20%;
