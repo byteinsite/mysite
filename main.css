@@ -21,7 +21,7 @@ body {
 /*body::-webkit-scrollbar { width: 0; }*/
 
 h1,h2 {
-  margin: 0;
+  margin: 10% 0 0 0;
   font-family: 'Oswald', sans-serif;
 }
 
@@ -84,7 +84,7 @@ p {
   margin: 0 0 70px 0;
   font-size: calc(25px + 10 * ((100vw - 1024px) / (1920 - 1024)));
   color: black;
-  font-family: 'Ruslan Display', cursive;
+/*  font-family: 'Ruslan Display', cursive;*/
   text-align: justify;
   height: 50vh;
 /*  animation: bounce-in-right 1.1s both;*/
@@ -616,6 +616,9 @@ p {
 
 .txt_l_m {
     flex: 0 0 15%;
+}
+.txt_box_l {
+    flex: 0 0 60%;
 }
 /*.txt_l2_m {
     flex: 1 1 20%;
