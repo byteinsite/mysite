@@ -59,7 +59,7 @@ var $window = $(window);
  	.fromTo(".content4_neon2", 0.01, {x:-2}, {x:2, clearProps:"x", repeat:20})
 	.fromTo(".content4_neon2", 0.01, {opacity: 1}, {opacity: 0.7, clearProps:"opacity", repeat:20}, "-=0.01")
 	.from(".title_color2", 0.5, {opacity: 0, yPercent: -100, rotationX: 360, scale: 0.5, zPercent: 50, ease: Bounce.easeOut}, "-=0.5")
-	.from("#slide4 .txt_box_l p", 0.5, {skewX: 85, xPercent: -300, ease: Back.easeOut}, "-=0.4")
+	.from("#slide4 .txt_box p", 0.5, {skewX: 85, xPercent: -300, ease: Back.easeOut}, "-=0.4")
     .reverse();
 	
 
@@ -289,7 +289,7 @@ function goToSlide($slide)
     {
 		pageHeight = newPageHeight;
 		pageWidth = newPageWidth;
-		
+
 		var newOrient = orientation();
 
 		if (orient !== newOrient) {
