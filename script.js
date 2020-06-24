@@ -1,5 +1,5 @@
-let vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
+// let vh = window.innerHeight * 0.01;
+// document.documentElement.style.setProperty('--vh', `${vh}px`);
 //==================== СВАЙП СЛАЙДОВ V3 =======================
 
 var $window = $(window);
@@ -278,11 +278,11 @@ function goToSlide($slide)
 	* */
   function onResize(event)
   {
-  	let vh = newPageHeight * 0.01;
+  	// let vh = newPageHeight * 0.01;
     //This will give us the new height of the window
     var newPageHeight = $window.innerHeight();
     var newPageWidth = $window.innerWidth();
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    // document.documentElement.style.setProperty('--vh', `${vh}px`);
     /*
 		*   If the new height is different from the old height ( the browser is resized vertically ), the slides are resized
 		* */
@@ -301,7 +301,8 @@ function goToSlide($slide)
       // TweenLite.set([$slidesContainer, $allSlides], {height: pageHeight + "px"});
 
       //The current slide should be always on the top
-      TweenLite.set($slidesContainer, {scrollTo: {y: pageHeight * $currentSlide.index() }});
+      // TweenLite.set($slidesContainer, {scrollTo: {y: pageHeight * $currentSlide.index() }});
+      goToSlide($currentSlide);
     }
 
   }
