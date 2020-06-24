@@ -14,6 +14,7 @@ body {
         color: white;
         -ms-overflow-style: none;
         overflow: -moz-scrollbars-none;
+        overflow: hidden;
 }
 overscroll-behavior: contain;
 body::-webkit-scrollbar { width: 0; }
