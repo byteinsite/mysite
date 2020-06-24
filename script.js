@@ -1,5 +1,5 @@
-
-
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
 //==================== СВАЙП СЛАЙДОВ V3 =======================
 
 var $window = $(window);
@@ -278,10 +278,11 @@ function goToSlide($slide)
 	* */
   function onResize(event)
   {
-
+  	let vh = newPageHeight * 0.01;
     //This will give us the new height of the window
     var newPageHeight = $window.innerHeight();
     var newPageWidth = $window.innerWidth();
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
     /*
 		*   If the new height is different from the old height ( the browser is resized vertically ), the slides are resized
 		* */
