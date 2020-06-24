@@ -16,7 +16,8 @@ var $window = $(window);
 
   //The height of the window
   var pageHeight = $window.innerHeight();
-  // console.log(pageHeight);
+  var pageWidth = $window.innerWidth();
+  var orient = orientation();
   //Key codes for up and down arrows on keyboard. We'll be using this to navigate change slides using the keyboard
   var keyCodes = {
     UP  : 38,
@@ -42,7 +43,7 @@ var $window = $(window);
 	.reverse();
 
   var timeline2 = new TimelineLite()
-	.fromTo("#slide3", 0.5, {xPercent: 100}, {xPercent: 0, ease: Linear.easeNone})
+	.add(orientSlide("#slide3"))
 	.from(".content3_neon1", 0.5, {x: 100, y: 100, scaleX: 0, rotation: 90, ease: Back.easeOut})
 	.fromTo(".content3_neon1", 0.01, {x:-2}, {x:2, clearProps:"x", repeat:20})
 	.fromTo(".content3_neon1", 0.01, {opacity: 1}, {opacity: 0.7, clearProps:"opacity", repeat:20}, "-=0.01")
@@ -53,7 +54,7 @@ var $window = $(window);
 	
   
   var timeline3 = new TimelineLite()//{repeat:-1, yoyo: true,  repeatDelay:0.5}
- 	.fromTo("#slide4", 0.5, {xPercent: -100}, {xPercent: 0, ease: Linear.easeNone})
+ 	.add(orientSlide("#slide4"))
  	.from(".content4_neon2", 0.5, {xPercent: -100, rotation: -360, ease: Back.easeOut})
  	.fromTo(".content4_neon2", 0.01, {x:-2}, {x:2, clearProps:"x", repeat:20})
 	.fromTo(".content4_neon2", 0.01, {opacity: 1}, {opacity: 0.7, clearProps:"opacity", repeat:20}, "-=0.01")
@@ -64,7 +65,7 @@ var $window = $(window);
 
 	
 	var timeline4 = new TimelineLite()
- 	.fromTo("#slide5", 0.5, {xPercent:  100}, {xPercent: 0, ease: Linear.easeNone})
+ 	.add(orientSlide("#slide5"))
  	.from(".content5_neon", 0.5, {x: 100, y: 100, scaleX: 0, rotation: 90, ease: Back.easeOut})
  	.fromTo(".content5_neon", 0.01, {x:-2}, {x:2, clearProps:"x", repeat:20})
 	.fromTo(".content5_neon", 0.01, {opacity: 1}, {opacity: 0.7, clearProps:"opacity", repeat:20}, "-=0.01")
@@ -74,7 +75,7 @@ var $window = $(window);
 	
 	
   var timeline5 = new TimelineLite()
- 	.fromTo("#slide6", 0.5, {xPercent:  -100}, {xPercent: 0, ease: Linear.easeNone})
+ 	.add(orientSlide("#slide6"))
  	.from(".content6_neon", 0.5, {xPercent: -100, rotation: -360, ease: Back.easeOut})
 	.fromTo(".content6_neon", 0.01, {x:-2}, {x:2, clearProps:"x", repeat:20})
 	.fromTo(".content6_neon", 0.01, {opacity: 1}, {opacity: 0.7, clearProps:"opacity", repeat:20}, "-=0.01")
@@ -84,7 +85,7 @@ var $window = $(window);
 
 	 
   var timeline6 = new TimelineLite()
- 	.fromTo("#slide7", 0.5, {xPercent:  100}, {xPercent: 0, ease: Linear.easeNone})
+ 	.add(orientSlide("#slide7"))
  	.from(".content7_neon", 0.5, {x: 100, y: 100, scaleX: 0, rotation: 90, ease: Back.easeOut})
  	.fromTo(".content7_neon", 0.01, {x:-2}, {x:2, clearProps:"x", repeat:20})
 	.fromTo(".content7_neon", 0.01, {opacity: 1}, {opacity: 0.7, clearProps:"opacity", repeat:20}, "-=0.01")
@@ -131,6 +132,28 @@ function isMobile() {
 
 // ================ Internal functions ==========================
 
+	function orientSlide(element)
+	{
+		if (orientation() == "portrait") {
+			var tlMoveY = TweenLite.fromTo(element, 0.5, {opacity: 0, yPercent: 100}, {opacity: 1, yPercent: 0, ease: Linear.easeNone});
+			return tlMoveY;
+		} else if(Number(element.split("")[6])%2){
+			var tlMoveR = TweenLite.fromTo(element, 0.5, {xPercent: 100}, {xPercent: 0, ease: Linear.easeNone});
+			return tlMoveR;
+		} else {
+			var tlMoveL = TweenLite.fromTo(element, 0.5, {xPercent: -100}, {xPercent: 0, ease: Linear.easeNone});
+			return tlMoveL;
+		}
+	}
+
+	function orientation()
+	{
+		if (pageHeight > pageWidth){
+			return "portrait";
+		} else {
+			return "landscape";
+		}
+	}
 
 	function onBurgerClick(event){
 	    $('.burger-icon, .header__menu2').each(function(){
@@ -216,7 +239,7 @@ function goToSlide($slide)
       isAnimating = true;
       $currentSlide = $slide;
       currentID = $currentSlide.attr('id');
-      NextSlide = $currentSlide.next();
+      // NextSlide = $currentSlide.next();
 
       new TimelineLite()
       .to($slidesContainer, 0.7, {onStart: onSlideChangeStart})
@@ -230,8 +253,8 @@ function goToSlide($slide)
     }
   }
 
-  function onSlideChangeStart() {
-	console.log(currentIndex + " - " + timelines[currentIndex].time());
+  function onSlideChangeStart() 
+  {
 	timelines[currentIndex].reversed(true).timeScale(2);
   }
   /*
@@ -245,10 +268,8 @@ function goToSlide($slide)
     
     // Change the index
     currentIndex = $currentSlide.index();
-      	// console.log("end-" + currentIndex);
     // Play the timeline for the current slide
   		timelines[currentIndex].reversed(false);
-  		console.log(currentIndex + " - " + timelines[currentIndex].time());
   }
 
 
@@ -260,14 +281,21 @@ function goToSlide($slide)
 
     //This will give us the new height of the window
     var newPageHeight = $window.innerHeight();
-
+    var newPageWidth = $window.innerWidth();
     /*
 		*   If the new height is different from the old height ( the browser is resized vertically ), the slides are resized
 		* */
-    if(pageHeight !== newPageHeight)
+    if(pageHeight !== newPageHeight || pageWidth !== newPageWidth)
     {
-      pageHeight = newPageHeight;
+		pageHeight = newPageHeight;
+		pageWidth = newPageWidth;
+		
+		var newOrient = orientation();
 
+		if (orient !== newOrient) {
+	    	orient = newOrient;
+	    	document.location.reload();
+    	}
       //This can be done via CSS only, but fails into some old browsers, so I prefer to set height via JS
       TweenLite.set([$slidesContainer, $allSlides], {height: pageHeight + "px"});
 
