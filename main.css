@@ -878,10 +878,8 @@ body.lock {
 
 .cssload-loader {
   position: relative;
-  left: calc(50% - 31px);
   width: 100px;
   height: 100px;
-  margin: 130px 0;
   -webkit-perspective: 780px;
           perspective: 780px;
 }
