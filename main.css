@@ -21,7 +21,7 @@ body {
 /*body::-webkit-scrollbar { width: 0; }*/
 
 h1,h2 {
-  margin: 10% 0 0 0;
+/*  margin: 10% 0 0 0;*/
   font-family: 'Oswald', sans-serif;
 }
 
@@ -51,6 +51,7 @@ h1 {
 h2 {
     font-size: calc(53px + 97 * ((100vw - 320px) / (1920 - 320)));
 /*  font-size: 200px;*/
+  margin: 10% 0 0 0;
 }
 
 h3 {
@@ -83,9 +84,9 @@ p {
   padding: 0 30px;
   margin: 0 0 70px 0;
   font-size: calc(25px + 10 * ((100vw - 1024px) / (1920 - 1024)));
-  color: black;
-/*  font-family: 'Ruslan Display', cursive;*/
-  text-align: justify;
+  color: #265873;
+  line-height: 1.1em;
+/*  text-align: justify;*/
   height: 50vh;
 /*  animation: bounce-in-right 1.1s both;*/
 }
@@ -218,8 +219,8 @@ p {
 }
 
 .content {
-  min-height: 100vh;
-  min-width: 100vw;
+  height: 100vh;
+  width: 100vw;
   position: relative;
   overflow: hidden;
 }
@@ -720,13 +721,17 @@ p {
 @media(max-width: 1023px) and (orientation: landscape ){
   h3 {
   font-size: calc(80px + 30 * ((100vw - 568px) / (1024 - 568)));
-}
-p {
-/*  height: auto;*/
-  padding: 10% 0 10% 0;
-  margin: 0;
-  font-size: calc(13.8px + 7 * ((100vw - 568px) / (1024 - 568)));
-}
+  }
+  p {
+  /*  height: auto;*/
+    padding: 10% 0 10% 0;
+    margin: 0;
+    font-size: calc(13.8px + 7 * ((100vw - 568px) / (1024 - 568)));
+  }
+  h2 {
+    font-size: calc(53px + 65 * ((100vw - 320px) / (1920 - 320)));
+    margin: 0;
+  }
 }
 
 /*@media (max-width: 767px) {
