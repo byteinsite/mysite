@@ -297,7 +297,7 @@ function goToSlide($slide)
 	    	document.location.reload();
     	}
       //This can be done via CSS only, but fails into some old browsers, so I prefer to set height via JS
-      TweenLite.set([$slidesContainer, $allSlides], {height: pageHeight + "px"});
+      // TweenLite.set([$slidesContainer, $allSlides], {height: pageHeight + "px"});
 
       //The current slide should be always on the top
       TweenLite.set($slidesContainer, {scrollTo: {y: pageHeight * $currentSlide.index() }});
