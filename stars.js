@@ -3,7 +3,7 @@ canvasWidth = window.innerWidth;
 canvasHeight = window.innerHeight;
 
 
-const app = new PIXI.Application({width: canvasWidth, height: canvasHeight});
+const app = new PIXI.Application({width: canvasWidth, height: canvasHeight, backgroundColor: 0x1f1c2a});
 document.body.appendChild(app.view);
 
 // Get the texture for rope.
