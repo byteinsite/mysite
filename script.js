@@ -256,6 +256,7 @@ function goToSlide($slide)
   function onSlideChangeStart() 
   {
 	timelines[currentIndex].reversed(true).timeScale(2);
+	warpSpeed = 1;
   }
   /*
 	*   Once the sliding is finished, we need to restore "isAnimating" flag.
@@ -263,7 +264,7 @@ function goToSlide($slide)
 	* */
   function onSlideChangeEnd() {
     isAnimating = false;
-    
+    warpSpeed = 0;
     // Reverse the timeline for the previous slide
     
     // Change the index
