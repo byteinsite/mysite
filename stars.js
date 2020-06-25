@@ -1,8 +1,8 @@
 // canvas setup
-const canvas = document.querySelector('canvas');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-const ctx = canvas.getContext('2d');
+// const canvas = document.querySelector('canvas');
+canvasWidth = window.innerWidth;
+canvasHeight = window.innerHeight;
+// const ctx = canvas.getContext('2d');
 
 // watch for browser resizing, reinitialize stars
 // window.addEventListener('resize', function() {
@@ -92,7 +92,7 @@ const ctx = canvas.getContext('2d');
 // init();
 // animate();
 
-const app = new PIXI.Application();
+const app = new PIXI.Application(canvasWidth, canvasHeight);
 document.body.appendChild(app.view);
 
 // Get the texture for rope.
