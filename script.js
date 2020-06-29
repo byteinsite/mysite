@@ -5,6 +5,7 @@
 var $window = $(window);
   var $document = $(document);
   var $burger = $(".burger");
+  var $navButtons = $("nav a");
   var $slidesContainer = $(".pinContainer");
   var $allSlides = $(".content");
   var $currentSlide = $allSlides.first();
@@ -107,6 +108,7 @@ var $window = $(window);
 
 	$window.on("resize", onResize).resize();
 	$window.on("mousewheel DOMMouseScroll", onMouseWheel);
+	$navButtons.on("click", onNavButtonClick);
 	$document.on("keydown", onKeyDown);
 		if (isMobile()){
 		$burger.swipe({
@@ -131,6 +133,22 @@ function isMobile() {
 //===================================================================
 
 // ================ Internal functions ==========================
+
+function onNavButtonClick(event)
+  {
+    //The clicked button
+    var $button = $(this);
+
+    //The slide the button points to
+    var $slide = $($button.attr("id"));
+
+    //If the slide exists, we go to it
+    if($slide.length)
+    {
+      goToSlide($slide);
+      event.preventDefault();
+    }
+  }
 
 	function orientSlide(element)
 	{
