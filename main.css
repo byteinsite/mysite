@@ -5,11 +5,6 @@
 }
 
 html {
-  box-sizing: border-box;
-  overflow: hidden;
-  width: 100vh;
-  height: 100vh;
-  position: fixed;
   -webkit-transition: height 1000000s ease;
 }
 
