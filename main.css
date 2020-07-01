@@ -7,14 +7,16 @@
 
 body { 
 	    min-height: 100vh;
-        margin: 0;
-        padding: 0;
-        background-color: grey;
-        font-family: 'Roboto', sans-serif;
-        color: white;
-        -ms-overflow-style: none;
-        overflow: -moz-scrollbars-none;
-        overflow: hidden;
+      margin: 0;
+      padding: 0;
+      background-color: grey;
+      font-family: 'Roboto', sans-serif;
+      color: white;
+      -ms-overflow-style: none;
+      overflow: -moz-scrollbars-none;
+      overflow: hidden;
+      overflow-y: scroll;
+      -webkit-overflow-scrolling:touch;
 }
 overscroll-behavior: contain;
 body::-webkit-scrollbar { width: 0; }
