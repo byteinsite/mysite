@@ -24,8 +24,9 @@ body {
       overflow: hidden;
       overflow-y: scroll;
       -webkit-overflow-scrolling:touch;
+      overscroll-behavior: contain;
 }
-overscroll-behavior: none;
+
 body::-webkit-scrollbar { width: 0; }
 
 h1,h2 {
