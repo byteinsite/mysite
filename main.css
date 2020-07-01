@@ -10,6 +10,7 @@ html {
   width: 100vh;
   height: 100vh;
   position: fixed;
+  -webkit-transition: height 1000000s ease;
 }
 
 body { 
