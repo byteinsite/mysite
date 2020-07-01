@@ -24,7 +24,10 @@ var $window = $(window);
     UP  : 38,
     DOWN: 40
   };
-
+   if (isMobile){
+  		pageHeight -= 56;
+  		console.log(pageHeight);
+  	}
   var currentIndex = 0;
   
   var timeline0 = new TimelineLite()
