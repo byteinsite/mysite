@@ -13,7 +13,7 @@ const starAmount = 1000;
 let cameraZ = 0;
 const fov = 20;
 const baseSpeed = 0.025;
-let speed = 0;
+let speed0 = 0;
 let warpSpeed = 0;
 const starStretch = 5;
 const starBaseSize = 0.05;
@@ -53,8 +53,8 @@ function randomizeStar(star, initial) {
 // Listen for animate update
 app.ticker.add((delta) => {
     // Simple easing. This should be changed to proper easing function when used for real.
-    speed += (warpSpeed - speed) / 20;
-    cameraZ += delta * 10 * (speed + baseSpeed);
+    speed0 += (warpSpeed - speed0) / 20;
+    cameraZ += delta * 10 * (speed0 + baseSpeed);
     for (let i = 0; i < starAmount; i++) {
         const star = stars[i];
         if (star.z < cameraZ) randomizeStar(star);
@@ -72,7 +72,7 @@ app.ticker.add((delta) => {
         star.sprite.scale.x = distanceScale * starBaseSize;
         // Star is looking towards center so that y axis is towards center.
         // Scale the star depending on how fast we are moving, what the stretchfactor is and depending on how far away it is from the center.
-        star.sprite.scale.y = distanceScale * starBaseSize + distanceScale * speed * starStretch * distanceCenter / app.renderer.screen.width;
+        star.sprite.scale.y = distanceScale * starBaseSize + distanceScale * speed0 * starStretch * distanceCenter / app.renderer.screen.width;
         star.sprite.rotation = Math.atan2(dyCenter, dxCenter) + Math.PI / 2;
     }
 });

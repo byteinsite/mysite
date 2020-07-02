@@ -34,7 +34,7 @@ h1 {
 /*  font-size: calc(64px + 236 * ((100vw - 320px) / (1920 - 320)));*/
   font-size: calc(60px + 250 * ((100vw - 320px) / (2496 - 320)));
 /*  font-size: 150px;*/
-/*  color: #fcc105;*/
+  color: #ff8800;
   font-weight: normal;
   z-index: 2;
 /*    text-shadow: 0 0 1px #eee, 5px 5px 1px #00dcdc, -5px -2px 1px #ff3232;

@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-	<title>Document</title>
+	<title>BYTEINSITE</title>
 	<link rel="stylesheet" href="main.css">
 	<script src="https://d157l7jdn8e5sf.cloudfront.net/dev/pixi-legacy.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -21,6 +21,11 @@
 		@import url('https://fonts.googleapis.com/css2?family=Ruslan+Display&display=swap');
 		@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap');
 	</style>
+
+	<script src="https://unpkg.com/three@0.115.0/build/three.min.js"></script>
+	<script src="https://unpkg.com/three@0.115.0/examples/js/utils/BufferGeometryUtils.js"></script>
+	<script src="https://unpkg.com/three@0.115.0/examples/js/controls/OrbitControls.js"></script>
+
 </head>
 <body>
 	<div class="wrapper">
@@ -66,9 +71,9 @@
 			<div id="pinMaster" class="pinContainer">
 				<div id="slide1" class="main_content1 content">
 					<h1 id="label_1">BYTEINSYTE</h1>
-					<div class="paralax_mount paralax_mount1"></div>
+<!-- 					<div class="paralax_mount paralax_mount1"></div>
 					<div class="paralax_mount paralax_mount2"></div>
-					<div class="paralax_mount paralax_mount3"></div>
+					<div class="paralax_mount paralax_mount3"></div> -->
 	<!-- 				<div class="paralax_mount paralax_mount4"></div> -->
 				</div>
 				<div id="slide2" class="main_content2 content">
@@ -213,7 +218,9 @@
 </div>
 <script type="text/javascript">var hellopreloader = document.getElementById("hellopreloader_preload");function fadeOutnojquery(el){el.style.opacity = 1;var interhellopreloader = setInterval(function(){el.style.opacity = el.style.opacity - 0.05;if (el.style.opacity <=0.05){ clearInterval(interhellopreloader);hellopreloader.style.display = "none";}},16);}window.onload = function(){setTimeout(function(){fadeOutnojquery(hellopreloader);},1000);};</script>
 <!-- Preload -->
-<script src=".\stars.js"></script>
+
+<script src="palms.js"></script>
 <script src=".\script.js"></script>
+<script src=".\stars.js"></script>
 </body>
 </html>
