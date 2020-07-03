@@ -1,11 +1,9 @@
-// let vh = window.innerHeight * 0.01;
-// document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 //==================== СВАЙП СЛАЙДОВ V3 =======================
 
 var $window = $(window);
   var $document = $(document);
   var $burger = $(".burger");
-  var $navButtons = $("nav a");
   var $slidesContainer = $(".pinContainer");
   var $allSlides = $(".content");
   var $currentSlide = $allSlides.first();
@@ -24,10 +22,7 @@ var $window = $(window);
     UP  : 38,
     DOWN: 40
   };
-   // if (isMobile){
-  	// 	pageHeight -= 56;
-  	// 	console.log(pageHeight);
-  	// }
+
   var currentIndex = 0;
   
   var timeline0 = new TimelineLite()
@@ -111,7 +106,6 @@ var $window = $(window);
 
 	$window.on("resize", onResize).resize();
 	$window.on("mousewheel DOMMouseScroll", onMouseWheel);
-	$navButtons.on("click", onNavButtonClick);
 	$document.on("keydown", onKeyDown);
 		if (isMobile()){
 		$burger.swipe({
@@ -136,22 +130,6 @@ function isMobile() {
 //===================================================================
 
 // ================ Internal functions ==========================
-
-function onNavButtonClick(event)
-  {
-    //The clicked button
-    var $button = $(this);
-
-    //The slide the button points to
-    var $slide = $($button.attr("id"));
-
-    //If the slide exists, we go to it
-    if($slide.length)
-    {
-      goToSlide($slide);
-      event.preventDefault();
-    }
-  }
 
 	function orientSlide(element)
 	{
@@ -277,7 +255,6 @@ function goToSlide($slide)
   function onSlideChangeStart() 
   {
 	timelines[currentIndex].reversed(true).timeScale(2);
-	warpSpeed = 1;
   }
   /*
 	*   Once the sliding is finished, we need to restore "isAnimating" flag.
@@ -285,7 +262,7 @@ function goToSlide($slide)
 	* */
   function onSlideChangeEnd() {
     isAnimating = false;
-    warpSpeed = 0;
+    
     // Reverse the timeline for the previous slide
     
     // Change the index
@@ -300,11 +277,10 @@ function goToSlide($slide)
 	* */
   function onResize(event)
   {
-  	// let vh = newPageHeight * 0.01;
+
     //This will give us the new height of the window
     var newPageHeight = $window.innerHeight();
     var newPageWidth = $window.innerWidth();
-    // document.documentElement.style.setProperty('--vh', `${vh}px`);
     /*
 		*   If the new height is different from the old height ( the browser is resized vertically ), the slides are resized
 		* */
@@ -323,8 +299,7 @@ function goToSlide($slide)
       // TweenLite.set([$slidesContainer, $allSlides], {height: pageHeight + "px"});
 
       //The current slide should be always on the top
-      // TweenLite.set($slidesContainer, {scrollTo: {y: pageHeight * $currentSlide.index() }});
-      goToSlide($currentSlide);
+      TweenLite.set($slidesContainer, {scrollTo: {y: pageHeight * $currentSlide.index() }});
     }
 
   }
