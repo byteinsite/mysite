@@ -572,39 +572,6 @@ p {
   position: absolute;
   background: url('./img/scr_str.png')  0% 87% / auto 70% no-repeat;
 }
-
-.about
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.neon {
-    width: 80vw;
-    height: 70vh;
-    padding: 20px;
-  border: 0.2rem solid #fff;
-  border-radius: 2rem;
-  color: #fff;
-  box-shadow:
-    0 0 .5rem #fff,
-    inset 0 0 .5rem #fff,
-    0 0 2rem #08f,
-    inset 0 0 2rem #08f,
-    0 0 4rem #08f,
-    inset 0 0 4rem #08f;  
-    animation: flicker 7s linear infinite;      
-    }    
-    .neon::-moz-selection {
-        background-color: #08f;  
-    }
-    .neon::selection {
-        background-color: #08f;
-    }
-    .neon:focus {
-        outline: none;
-    }
-
 @media (max-width: 1919px) and (min-height: 1023px) {
 .content4_wrap {
   flex: 0 0 80%;
@@ -938,7 +905,25 @@ p {
 .txt_box_l {
     flex: 0 0 60%;
 }
+/*.txt_l2_m {
+    flex: 1 1 20%;
+}*/
 
+/*.flex_txt {
+    flex: 1 1 10%;
+}
+.flex_txt2 {
+  flex: 1 1 50%;
+}
+.flex_txt3 {
+  flex: 1 1 30%;
+}
+.flex_txt4 {
+    flex: 0 0 10%;
+}
+.flex_txt2, .flex2_txt2 {
+  flex: 1 1 10%;
+}*/
 .content3_bg {
   background: url('./img/scr1_1.png') top left / 100% 100% no-repeat;
 }
@@ -983,7 +968,17 @@ p {
     background: url(./img/scr_str.png) 0% 0% / auto 55% no-repeat;
 }
 
-
+/*.txt_box, .txt_box2 {
+    flex: 0 0 60%;
+    align-items: center;
+}
+.txt_box2 {
+  flex: 0 0 50%;
+}
+.txt_box3 {
+  flex: 0 0 40%;
+}
+*/
 p {
   height: auto;
   padding: 10% 10% 0 10%;
