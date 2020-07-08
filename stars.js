@@ -28,7 +28,7 @@ for (let i = 0; i < starAmount; i++) {
         x: 0,
         y: 0,
     };
-    star.sprite.anchor.x = 0.5;
+    star.sprite.anchor.x = 0.6;
     star.sprite.anchor.y = 0.7;
     randomizeStar(star, true);
     app.stage.addChild(star.sprite);
@@ -44,11 +44,6 @@ function randomizeStar(star, initial) {
     star.x = Math.cos(deg) * distance;
     star.y = Math.sin(deg) * distance;
 }
-
-// Change flight speed every 5 seconds
-// setInterval(() => {
-//     warpSpeed = warpSpeed > 0 ? 0 : 1;
-// }, 5000);
 
 // Listen for animate update
 app.ticker.add((delta) => {
@@ -76,3 +71,69 @@ app.ticker.add((delta) => {
         star.sprite.rotation = Math.atan2(dyCenter, dxCenter) + Math.PI / 2;
     }
 });
+//======================================================
+// let sceneBG, camera2, renderer2, starGeo, stars;
+// function init() {
+//     //create scene object
+//     sceneBG = new THREE.Scene();
+//     sceneBG.background = new THREE.Color(0x1f1c2a);
+//     //setup camera with facing upward
+//     camera2 = new THREE.PerspectiveCamera(60,window.innerWidth / window.innerHeight, 1, 1500);
+//     camera2.position.z = 1;
+//     // camera2.rotation.x = Math.PI/2;
+
+//     //setup renderer
+//     renderer2 = new THREE.WebGLRenderer();
+//     renderer2.setSize(window.innerWidth, window.innerHeight);
+//     document.body.appendChild(renderer2.domElement);
+
+//     starGeo = new THREE.Geometry();
+//     for(let i=0;i<6000;i++) {
+//         let star = new THREE.Vector3(
+//         Math.random() * 3000 - 1500,
+//         Math.random() * 3000 - 1500,
+//         Math.random() * 3000 - 1500
+//       );
+//         star.velocity = 0;
+//         star.acceleration = 0.02;
+//         // star.scale = THREE.Vector3(1,1,10);
+//       starGeo.vertices.push(star);
+//     }
+//     starGeo.rotateX(Math.PI * 0.5);
+//     let sprite = new THREE.TextureLoader().load( 'https://pixijs.io/examples/examples/assets/star.png' );
+//     let starMaterial = new THREE.PointsMaterial({
+//       // color: 0xaaaaaa,
+//       size: 0.9,
+//       map: sprite
+//     });
+
+//     stars = new THREE.Points(starGeo,starMaterial);
+//     sceneBG.add(stars);
+
+//     animate(); 
+// }
+// //rendering loop
+// function animate() {
+//     starGeo.vertices.forEach(p => {
+//     // p.acceleration = warpSpeed;
+//     p.velocity += p.acceleration;
+
+//     p.z += p.velocity;
+     
+//     if (p.z > 1500) {
+//       p.z = -1500;
+//       p.velocity = 0;
+//     }
+//     if (warpSpeed){p.scale = THREE.Vector3(1,1,1000);
+//     } else {
+//       p.scale = THREE.Vector3(1,1,1);
+//     }
+//     });
+//     // console.log(camera2.position.x);
+//     // camera2.position.x = -mouseX/width*500;
+//     // camera2.lookAt(scene.position);
+//     starGeo.verticesNeedUpdate = true;
+//   renderer2.render(sceneBG, camera2);
+//   requestAnimationFrame(animate);
+// }
+// init();

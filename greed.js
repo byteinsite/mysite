@@ -104,12 +104,12 @@ float snoise(vec3 v)
 }
 `;
 
-
+var mouseX = 0;
 var materialShaders = [];
-var speed = 5;
+var speed = 4;
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
-camera.position.set(0, 1.3, 7);
+camera.position.set(0, 1.2, 5);
 camera.lookAt(scene.position);
 var renderer = new THREE.WebGLRenderer({
   antialias: true,
@@ -117,19 +117,11 @@ var renderer = new THREE.WebGLRenderer({
 });
 var canvas = renderer.domElement;
 document.querySelector('#slide1').appendChild(canvas);
+canvas.setAttribute('class', 'grid');
+canvas.setAttribute('style', 'position: absolute');
+var width = canvas.clientWidth;
+var height = canvas.clientHeight;
 
-// scene.background = new THREE.Color(0xffaa44);
-// console.log(scene.background);
-// scene.fog = new THREE.Fog(scene.background, 42.5, 50);
-
-var controls = new THREE.OrbitControls(camera, canvas);
-controls.enablePan = false;
-controls.minDistance = 5;
-controls.maxDistance = 7;
-controls.maxPolarAngle = Math.PI * 0.55;
-controls.minPolarAngle = Math.PI * 0.25;
-controls.target.set(0, 1.8, 0);
-controls.update();
 
 
 // GROUND AND ROAD
@@ -189,37 +181,8 @@ planeMat.onBeforeCompile = shader => {
 var plane = new THREE.Mesh(planeGeom, planeMat);
 scene.add(plane);
 
-// SUN
 
-// var sunGeom = new THREE.CircleBufferGeometry(200, 64);
-// var sunMat = new THREE.MeshBasicMaterial({color: 0xff8800, fog: false, transparent: true});
-// sunMat.onBeforeCompile = shader => {
-//   shader.uniforms.time = {value: 0};
-//   shader.vertexShader =
-//     `
-//     varying vec2 vUv;
-//   ` + shader.vertexShader;
-//   shader.vertexShader = shader.vertexShader.replace(
-//     `#include <begin_vertex>`,
-//     `#include <begin_vertex>
-//       vUv = uv;
-//     `
-//   );
-//   shader.fragmentShader = `
-//     varying vec2 vUv;
-//   ` + shader.fragmentShader;
-//   shader.fragmentShader = shader.fragmentShader.replace(
-//    `gl_FragColor = vec4( outgoingLight, diffuseColor.a );`,
-//     `gl_FragColor = vec4( outgoingLight, diffuseColor.a * smoothstep(0.5, 0.7, vUv.y));`
-//   );
-  
-//   materialShaders.push(shader);
-// }
-// var sun = new THREE.Mesh(sunGeom, sunMat);
-// sun.position.set(0, 0, -500);
-// scene.add(sun);
-
-
+var rotateY = 0;
 var clock = new THREE.Clock();
 var time = 0;
 render();
@@ -228,13 +191,21 @@ function render() {
   if (resize(renderer)) {
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
+    camera.position.set(0, 1.2, 5);
   }
   time = clock.getElapsedTime();
   materialShaders.forEach(m => {
     m.uniforms.time.value = time;
   });
+
+  
+  // camera.position.y += (mouseY - camera.position.y) * 0.01;
+  
+  moveCamera();
+
+  // console.log((mouseX - camera.position.x) * 0.1);
   renderer.render(scene, camera);
-  requestAnimationFrame(render);
+    requestAnimationFrame(render);
 }
 
 function resize(renderer) {
@@ -246,4 +217,32 @@ function resize(renderer) {
     renderer.setSize(width, height, false);
   }
   return needResize;
+}
+
+function mousemove(e) {
+
+  mouseX = (e.clientX - width/2);
+
+}
+
+function moveCamera() {
+
+  camera.position.x = mouseX/width * 6;
+
+    if (warpSpeed) {
+      
+      if (rotateY < 20) rotateY += 0.5;
+      camera.lookAt(0, rotateY, 0);
+      // console.log(firstSlideChange);
+      } else { 
+      // console.log(firstSlideChange);
+        if (rotateY > 0) {
+          rotateY -= 0.5;
+          camera.lookAt(0, rotateY, 0);
+        } else {
+          camera.lookAt(scene.position);
+        }
+      }
+
+
 }

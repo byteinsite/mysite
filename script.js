@@ -9,6 +9,7 @@ var $window = $(window);
   var $slidesContainer = $(".pinContainer");
   var $allSlides = $(".content");
   var $currentSlide = $allSlides.first();
+  var $firstSlide = $("#slide1");
   // var slideControl = $("nav a")
 
 
@@ -32,9 +33,6 @@ var $window = $(window);
   
   var timeline0 = new TimelineLite()
   	.from("#label_1", 1, {yPercent: -100, scale: 0.1})
-  	.from(".paralax_mount1", 1, {x: '-10%', scale: 4}, "-=1")
-  	.from(".paralax_mount2", 1, {x: '10%', scale: 4}, "-=1")
-	.from(".paralax_mount3", 1, {y: '100%', scale: 2}, "-=1")
 	.reverse();
 
   var timeline1 = new TimelineLite()
@@ -124,7 +122,7 @@ var $window = $(window);
 	} else {
 		$burger.on("click", onBurgerClick);
 	}
-  
+  	$firstSlide.on('mousemove', mousemove);
 //================= проверка мобильного устройства =================
 function isMobile() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -262,14 +260,13 @@ function goToSlide($slide)
       currentID = $currentSlide.attr('id');
       // NextSlide = $currentSlide.next();
 
-      new TimelineLite()
-      .to($slidesContainer, 0.7, {onStart: onSlideChangeStart})
-      .to($slidesContainer, 0.5, {scrollTo: {y: pageHeight * $currentSlide.index() }, onComplete: onSlideChangeEnd, onCompleteScope: this});
-
-
       //Definig slide status
       TweenLite.to($allSlides.filter(".active"), 0.1, {className: "-=active"});
       TweenLite.to($allSlides.filter($currentSlide), 0.1, {className: "+=active"});
+
+      new TimelineLite()
+      .to($slidesContainer, 0.7, {onStart: onSlideChangeStart})
+      .to($slidesContainer, 0.5, {scrollTo: {y: pageHeight * $currentSlide.index() }, onComplete: onSlideChangeEnd, onCompleteScope: this});
 
     }
   }
@@ -278,6 +275,7 @@ function goToSlide($slide)
   {
 	timelines[currentIndex].reversed(true).timeScale(2);
 	warpSpeed = 1;
+
   }
   /*
 	*   Once the sliding is finished, we need to restore "isAnimating" flag.
@@ -286,6 +284,7 @@ function goToSlide($slide)
   function onSlideChangeEnd() {
     isAnimating = false;
     warpSpeed = 0;
+
     // Reverse the timeline for the previous slide
     
     // Change the index

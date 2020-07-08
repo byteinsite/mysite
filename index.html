@@ -25,7 +25,7 @@
 	<script src="https://unpkg.com/three@0.115.0/build/three.min.js"></script>
 	<script src="https://unpkg.com/three@0.115.0/examples/js/utils/BufferGeometryUtils.js"></script>
 	<script src="https://unpkg.com/three@0.115.0/examples/js/controls/OrbitControls.js"></script>
-
+	<script src="js\Stats.js"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -218,9 +218,29 @@
 </div>
 <script type="text/javascript">var hellopreloader = document.getElementById("hellopreloader_preload");function fadeOutnojquery(el){el.style.opacity = 1;var interhellopreloader = setInterval(function(){el.style.opacity = el.style.opacity - 0.05;if (el.style.opacity <=0.05){ clearInterval(interhellopreloader);hellopreloader.style.display = "none";}},16);}window.onload = function(){setTimeout(function(){fadeOutnojquery(hellopreloader);},1000);};</script>
 <!-- Preload -->
-
-<script src="palms.js"></script>
-<script src=".\script.js"></script>
 <script src=".\stars.js"></script>
+<script src="greed.js"></script>
+<script src=".\script.js"></script>
+
+<script>
+
+		var stats = new Stats();
+		stats.showPanel( 0 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+		document.body.appendChild( stats.dom );
+
+		function animate() {
+
+			stats.begin();
+
+			// monitored code goes here
+
+			stats.end();
+
+			requestAnimationFrame( animate );
+
+		}
+
+		requestAnimationFrame( animate );
+</script>
 </body>
 </html>
