@@ -106,11 +106,11 @@ float snoise(vec3 v)
 
 var mouseX = 0;
 var materialShaders = [];
-var speed = 4;
+var speed = 40;
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
-camera.position.set(0, 1.2, 5);
-camera.lookAt(scene.position);
+camera.position.set(0, 1, 50);
+camera.lookAt(0, 1.5, 20);
 var renderer = new THREE.WebGLRenderer({
   antialias: true,
   alpha: true
@@ -182,7 +182,7 @@ var plane = new THREE.Mesh(planeGeom, planeMat);
 scene.add(plane);
 
 
-var rotateY = 0;
+var rotateY = 0, rotateZ = 3;
 var clock = new THREE.Clock();
 var time = 0;
 render();
@@ -191,7 +191,7 @@ function render() {
   if (resize(renderer)) {
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
-    camera.position.set(0, 1.2, 5);
+    camera.position.set(0, 1, 50);
   }
   time = clock.getElapsedTime();
   materialShaders.forEach(m => {
@@ -230,17 +230,19 @@ function moveCamera() {
   camera.position.x = mouseX/width * 6;
 
     if (warpSpeed) {
-      
-      if (rotateY < 20) rotateY += 0.5;
-      camera.lookAt(0, rotateY, 0);
-      // console.log(firstSlideChange);
+      // if (rotateZ > -50) rotateZ -= 5;
+      if (speed<100) speed +=1;
+      if (rotateY < 20) rotateY += 0.25;
+      camera.lookAt(0, rotateY, 20);
+
       } else { 
-      // console.log(firstSlideChange);
-        if (rotateY > 0) {
+        // speed = 4;
+        if (rotateY > 1.5) {
+          speed -=1;
           rotateY -= 0.5;
-          camera.lookAt(0, rotateY, 0);
+          camera.lookAt(0, rotateY, 40);
         } else {
-          camera.lookAt(scene.position);
+          camera.lookAt(0, 1.5, 20);
         }
       }
 
