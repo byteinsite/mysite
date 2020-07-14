@@ -105,13 +105,13 @@ float snoise(vec3 v)
 `;
 
 // var mouseX = 0;
-var rotateY = 0;
+var lookUp = new THREE.Vector3(0, 1.5, 0);
 var materialShaders = [];
 var speed = 4;
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
 camera.position.set(0, 1, 5);
-camera.lookAt(0, 1.5, 0);
+camera.lookAt(lookUp);
 var renderer = new THREE.WebGLRenderer({
   antialias: true,
   alpha: true
@@ -182,11 +182,11 @@ planeMat.onBeforeCompile = shader => {
 var plane = new THREE.Mesh(planeGeom, planeMat);
 scene.add(plane);
 
-
+var tlLookAt = TweenLite.fromTo(lookUp, 1, {y: 5}, {y: 1.5, ease: Linear.easeNone});
 var clock = new THREE.Clock();
 var time = 0;
 render();
-
+console.log(tlLookAt);
 function render() {
   if (resize(renderer)) {
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
@@ -198,10 +198,10 @@ function render() {
     m.uniforms.time.value = time;
   });
 
-  
+  camera.lookAt(lookUp);
   // camera.position.y += (mouseY - camera.position.y) * 0.01;
   
-  moveCamera();
+  // moveCamera();
 
   // console.log((mouseX - camera.position.x) * 0.1);
   renderer.render(scene, camera);
@@ -225,26 +225,26 @@ function resize(renderer) {
 
 // }
 
-function moveCamera() {
+// function moveCamera() {
 
-  // camera.position.x = mouseX/width * 6;
+//   // camera.position.x = mouseX/width * 6;
 
-    if (warpSpeed) {
-      // if (rotateZ > -50) rotateZ -= 5;
-      // if (speed<100) speed +=1;
-      if (rotateY < 50) rotateY += 0.5;
-      camera.lookAt(0, rotateY, 0);
+//     if (warpSpeed) {
+//       // if (rotateZ > -50) rotateZ -= 5;
+//       // if (speed<100) speed +=1;
+//       if (rotateY < 50) rotateY += 0.5;
+//       camera.lookAt(0, rotateY, 0);
 
-      } else { 
-        // speed = 4;
-        if (rotateY > 1.5) {
-          // speed -=1;
-          rotateY -= 0.5;
-          camera.lookAt(0, rotateY, 0);
-        } else {
-          camera.lookAt(0, 1.5, 0);
-        }
-      }
+//       } else { 
+//         // speed = 4;
+//         if (rotateY > 1.5) {
+//           // speed -=1;
+//           rotateY -= 0.5;
+//           camera.lookAt(0, rotateY, 0);
+//         } else {
+//           camera.lookAt(0, 1.5, 0);
+//         }
+//       }
 
 
-}
+// }
