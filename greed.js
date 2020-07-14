@@ -110,8 +110,8 @@ var materialShaders = [];
 var speed = 4;
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
-camera.position.set(0, 1, 50);
-camera.lookAt(0, 1.5, 20);
+camera.position.set(0, 1, 5);
+camera.lookAt(0, 1.5, 0);
 var renderer = new THREE.WebGLRenderer({
   antialias: true,
   alpha: true
@@ -191,7 +191,7 @@ function render() {
   if (resize(renderer)) {
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
-    camera.position.set(0, 1, 50);
+    camera.position.set(0, 1, 5);
   }
   time = clock.getElapsedTime();
   materialShaders.forEach(m => {
@@ -232,17 +232,17 @@ function moveCamera() {
     if (warpSpeed) {
       // if (rotateZ > -50) rotateZ -= 5;
       // if (speed<100) speed +=1;
-      if (rotateY < 25) rotateY += 0.25;
-      camera.lookAt(0, rotateY, 20);
+      if (rotateY < 50) rotateY += 0.5;
+      camera.lookAt(0, rotateY, 0);
 
       } else { 
         // speed = 4;
         if (rotateY > 1.5) {
           // speed -=1;
           rotateY -= 0.5;
-          camera.lookAt(0, rotateY, 20);
+          camera.lookAt(0, rotateY, 0);
         } else {
-          camera.lookAt(0, 1.5, 20);
+          camera.lookAt(0, 1.5, 0);
         }
       }
 
