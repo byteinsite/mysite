@@ -106,7 +106,7 @@ float snoise(vec3 v)
 
 var mouseX = 0;
 var materialShaders = [];
-var speed = 40;
+var speed = 4;
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
 camera.position.set(0, 1, 50);
@@ -231,16 +231,16 @@ function moveCamera() {
 
     if (warpSpeed) {
       // if (rotateZ > -50) rotateZ -= 5;
-      if (speed<100) speed +=1;
+      // if (speed<100) speed +=1;
       if (rotateY < 20) rotateY += 0.25;
       camera.lookAt(0, rotateY, 20);
 
       } else { 
         // speed = 4;
         if (rotateY > 1.5) {
-          speed -=1;
+          // speed -=1;
           rotateY -= 0.5;
-          camera.lookAt(0, rotateY, 40);
+          camera.lookAt(0, rotateY, 20);
         } else {
           camera.lookAt(0, 1.5, 20);
         }
