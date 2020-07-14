@@ -104,7 +104,8 @@ float snoise(vec3 v)
 }
 `;
 
-var mouseX = 0;
+// var mouseX = 0;
+var rotateY = 0;
 var materialShaders = [];
 var speed = 4;
 var scene = new THREE.Scene();
@@ -182,7 +183,6 @@ var plane = new THREE.Mesh(planeGeom, planeMat);
 scene.add(plane);
 
 
-var rotateY = 0, rotateZ = 3;
 var clock = new THREE.Clock();
 var time = 0;
 render();
@@ -219,20 +219,20 @@ function resize(renderer) {
   return needResize;
 }
 
-function mousemove(e) {
+// function mousemove(e) {
 
-  mouseX = (e.clientX - width/2);
+//   mouseX = (e.clientX - width/2);
 
-}
+// }
 
 function moveCamera() {
 
-  camera.position.x = mouseX/width * 6;
+  // camera.position.x = mouseX/width * 6;
 
     if (warpSpeed) {
       // if (rotateZ > -50) rotateZ -= 5;
       // if (speed<100) speed +=1;
-      if (rotateY < 20) rotateY += 0.25;
+      if (rotateY < 25) rotateY += 0.25;
       camera.lookAt(0, rotateY, 20);
 
       } else { 

@@ -122,7 +122,7 @@ var $window = $(window);
 	} else {
 		$burger.on("click", onBurgerClick);
 	}
-  	$firstSlide.on('mousemove', mousemove);
+  	// $firstSlide.on('mousemove', mousemove);
 //================= проверка мобильного устройства =================
 function isMobile() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
