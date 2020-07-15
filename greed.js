@@ -107,7 +107,7 @@ float snoise(vec3 v)
 // var mouseX = 0;
 var lookUp = new THREE.Vector3(0, 1.5, 0);
 var materialShaders = [];
-var speed = 4;
+var speed = 3;
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 1000);
 camera.position.set(0, 1, 5);
@@ -144,7 +144,7 @@ planeMat.onBeforeCompile = shader => {
       vec2 tuv = uv;
       float t = time * 0.01 * ${speed}.; 
       tuv.y += t;
-      transformed.y = snoise(vec3(tuv * 5., 0.)) * 5.;
+      transformed.y = snoise(vec3(tuv * 5., 0.)) * 6.;
       transformed.y *= smoothstep(5., 15., abs(transformed.x)); // road stripe
       vPos = transformed;
     `
@@ -180,13 +180,15 @@ planeMat.onBeforeCompile = shader => {
   materialShaders.push(shader);
 };
 var plane = new THREE.Mesh(planeGeom, planeMat);
+// plane.scale.set(0.2,0.2,0.2);
+if (camera.aspect<1) plane.scale.set(0.5,0.5,0.5);
 scene.add(plane);
 
 var tlLookAt = TweenLite.fromTo(lookUp, 1, {y: 5}, {y: 1.5, ease: Linear.easeNone});
 var clock = new THREE.Clock();
 var time = 0;
 render();
-console.log(tlLookAt);
+console.log(camera.aspect);
 function render() {
   if (resize(renderer)) {
     camera.aspect = canvas.clientWidth / canvas.clientHeight;

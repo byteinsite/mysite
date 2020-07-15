@@ -30,7 +30,7 @@ var $window = $(window);
   	// 	console.log(pageHeight);
   	// }
   var currentIndex = 0;
-  console.log(tlLookAt);
+  
   var timeline0 = new TimelineLite()
   	.from("#label_1", 1, {yPercent: -100, scale: 0.1})
   	.add(tlLookAt, "-=1")
