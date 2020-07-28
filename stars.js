@@ -7,9 +7,9 @@ const app = new PIXI.Application({width: canvasWidth, height: canvasHeight, back
 document.body.appendChild(app.view);
 
 // Get the texture for rope.
-const starTexture = PIXI.Texture.from('http://byteinsite.ru/img/star.png');
+const starTexture = PIXI.Texture.from('./img/star.png');
 // background.position.set(0,0);
-  const background = PIXI.Sprite.from('http://byteinsite.ru/img/space_cloud1.jpg');
+  const background = PIXI.Sprite.from('./img/space_cloud1.jpg');
   background.width = app.screen.width;
   background.height = app.screen.height;
   app.stage.addChild(background);
