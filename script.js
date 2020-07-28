@@ -311,8 +311,8 @@ function goToSlide($slide)
   {
   	// let vh = newPageHeight * 0.01;
     //This will give us the new height of the window
-    var newPageHeight = $window.innerHeight();
-    var newPageWidth = $window.innerWidth();
+    var newPageHeight = $currentSlide.parent().outerHeight();
+    var newPageWidth = $currentSlide.parent().outerWidth();
     // document.documentElement.style.setProperty('--vh', `${vh}px`);
     /*
 		*   If the new height is different from the old height ( the browser is resized vertically ), the slides are resized
