@@ -7,7 +7,15 @@ const app = new PIXI.Application({width: canvasWidth, height: canvasHeight, back
 document.body.appendChild(app.view);
 
 // Get the texture for rope.
-const starTexture = PIXI.Texture.from('https://pixijs.io/examples/examples/assets/star.png');
+const starTexture = PIXI.Texture.from('http://byteinsite/img/star.png');//https://pixijs.io/examples/examples/assets/star.png
+// let bgTexture = PIXI.Texture.from('https://byteinsite.ru/img/space_cloud1.jpg');
+
+// let background = PIXI.Sprite(bgTexture);
+// background.position.set(0,0);
+const background = PIXI.Sprite.from('http://byteinsite/img/space_cloud1.jpg');
+background.width = app.screen.width;
+background.height = app.screen.height;
+app.stage.addChild(background);
 
 const starAmount = 1000;
 let cameraZ = 0;
@@ -17,7 +25,7 @@ let speed0 = 0;
 let warpSpeed = 0;
 const starStretch = 5;
 const starBaseSize = 0.05;
-
+// const starColor = [0xbbFFFF, 0xFFFFbb, 0xFFbbbb, 0xFFFFFF]
 
 // Create the stars
 const stars = [];
@@ -28,12 +36,19 @@ for (let i = 0; i < starAmount; i++) {
         x: 0,
         y: 0,
     };
-    star.sprite.anchor.x = 0.6;
+    star.sprite.anchor.x = 0.7;
     star.sprite.anchor.y = 0.7;
+    star.sprite.tint = 0xaaFFFF;//getRundomColor(starColor);
     randomizeStar(star, true);
     app.stage.addChild(star.sprite);
     stars.push(star);
 }
+
+// function getRundomColor(arrColor){
+//   min = Math.ceil(0);
+//   max = Math.floor(arrColor.length - 1);
+//   return arrColor[Math.floor(Math.random() * (max - min + 1)) + min];
+// }
 
 function randomizeStar(star, initial) {
     star.z = initial ? Math.random() * 2000 : cameraZ + Math.random() * 1000 + 2000;
