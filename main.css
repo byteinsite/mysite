@@ -217,8 +217,8 @@ p {
 }
 
 .pinContainer {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   /*height: calc(var(--vh, 1vh) * 100);*/
   overflow: hidden;
   position: absolute;
@@ -226,9 +226,9 @@ p {
 }
 
 .content {
-  height: 100vh;
+  height: 100%;
   /*height: calc(var(--vh, 1vh) * 100);*/
-  width: 100vw;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
