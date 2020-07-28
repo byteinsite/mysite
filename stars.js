@@ -25,7 +25,6 @@ let speed0 = 0;
 let warpSpeed = 0;
 const starStretch = 5;
 const starBaseSize = 0.05;
-// const starColor = [0xbbFFFF, 0xFFFFbb, 0xFFbbbb, 0xFFFFFF]
 
 // Create the stars
 const stars = [];
