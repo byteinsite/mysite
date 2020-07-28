@@ -6,11 +6,12 @@ var $window = $(window);
   var $document = $(document);
   var $burger = $(".burger");
   var $navButtons = $("nav a");
+  var $formButton = $("div .button")
   var $slidesContainer = $(".pinContainer");
   var $allSlides = $(".content");
   var $currentSlide = $allSlides.first();
   var $firstSlide = $("#slide1");
-  // var slideControl = $("nav a")
+  var $formSlide = $("#slide8")
 
 
   //Animating flag - is our app animating
@@ -33,6 +34,7 @@ var $window = $(window);
   
   var timeline0 = new TimelineLite()
   	.from("#label_1", 1, {yPercent: -100, scale: 0.1})
+  	.add(tlLookAt, "-=1")
 	.reverse();
 
   var timeline1 = new TimelineLite()
@@ -110,6 +112,7 @@ var $window = $(window);
 	$window.on("resize", onResize).resize();
 	$window.on("mousewheel DOMMouseScroll", onMouseWheel);
 	$navButtons.on("click", onNavButtonClick);
+	$formButton.on("clic", onFormButtonClick)
 	$document.on("keydown", onKeyDown);
 		if (isMobile()){
 		$burger.swipe({
@@ -146,10 +149,17 @@ function onNavButtonClick(event)
     //If the slide exists, we go to it
     if($slide.length)
     {
+		onBurgerClick(event);
       goToSlide($slide);
       event.preventDefault();
     }
   }
+
+function onFormButtonClick(event)
+	{
+		goToSlide($formSlide);
+		event.preventDefault();
+	}
 
 	function orientSlide(element)
 	{
@@ -311,6 +321,13 @@ function goToSlide($slide)
     {
 		pageHeight = newPageHeight;
 		pageWidth = newPageWidth;
+
+		$(".pinContainer > .content").each(function() {
+
+        $(this).css("min-height", 0);
+        $(this).css("min-height", $(this).parent().outerHeight());
+
+    });
 
 		var newOrient = orientation();
 
