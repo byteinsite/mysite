@@ -7,12 +7,12 @@ const app = new PIXI.Application({width: canvasWidth, height: canvasHeight, back
 document.body.appendChild(app.view);
 
 // Get the texture for rope.
-const starTexture = PIXI.Texture.from('http://byteinsite/img/star.png');//https://pixijs.io/examples/examples/assets/star.png
-// let bgTexture = PIXI.Texture.from('https://byteinsite.ru/img/space_cloud1.jpg');
+const starTexture = PIXI.Texture.from('http://byteinsite.ru/img/star.png');
+
 
 // let background = PIXI.Sprite(bgTexture);
 // background.position.set(0,0);
-const background = PIXI.Sprite.from('http://byteinsite/img/space_cloud1.jpg');
+const background = PIXI.Sprite.from('http://byteinsite.ru/img/space_cloud1.jpg');
 background.width = app.screen.width;
 background.height = app.screen.height;
 app.stage.addChild(background);

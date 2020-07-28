@@ -145,6 +145,7 @@ p {
 	flex-direction: column;
 	min-height: 100vh;
 	background-color: #001e2d;
+  background: url(img/space_cloud1.jpg) auto no-repeat;
 }
 .header {
 	position: fixed;
@@ -853,6 +854,7 @@ canvas {
   animation: none;
 }
 
+
 @keyframes burger_neon {
   from {
     box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF, 0 0 200px #228DFF/**/;
@@ -882,6 +884,39 @@ body.lock {
   }
 }
 /*menu end*/
+
+
+/*======================================FORM=============================================*/
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  height: 500px;
+  margin: -50px 0 0 -150px;
+  text-align: center;
+  border-radius: 10px;
+  border: 3px solid rgb(0, 180, 230);
+  box-shadow: 0 0 15px -1px rgb(0, 180, 230), 
+  0 0 12px -1px rgb(0, 180, 230) inset;
+  cursor: pointer;
+}
+
+.form__list {
+  padding: 0px;
+  list-style-type: none;
+}
+
+.form__list li{
+  list-style: none;
+  margin: 20px;
+}
+
+input {
+    border: 3px solid rgb(0, 150, 210);
+  box-shadow: 0 0 15px -1px rgb(0, 150, 210), 
+  0 0 12px -1px rgb(0, 150, 210) inset;
+}
 
 /*============= Preloader ============== */
 
