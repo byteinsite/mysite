@@ -1,5 +1,4 @@
-// let vh = window.innerHeight * 0.01;
-// document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 //==================== СВАЙП СЛАЙДОВ V3 =======================
 
 var $window = $(window);
@@ -102,8 +101,6 @@ var $window = $(window);
 
   //Going to the first slide
   goToSlide($currentSlide);
-  // console.log($currentSlide);
-  //TweenLite.set($currentSlide, {className: "+=active"});
 
   /*
 	*   Adding event listeners
@@ -125,7 +122,7 @@ var $window = $(window);
 	} else {
 		$burger.on("click", onBurgerClick);
 	}
-  	// $firstSlide.on('mousemove', mousemove);
+
 //================= проверка мобильного устройства =================
 function isMobile() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
@@ -335,11 +332,9 @@ function goToSlide($slide)
 	    	orient = newOrient;
 	    	document.location.reload();
     	}
-      //This can be done via CSS only, but fails into some old browsers, so I prefer to set height via JS
-      // TweenLite.set([$slidesContainer, $allSlides], {height: pageHeight + "px"});
 
       //The current slide should be always on the top
-      // TweenLite.set($slidesContainer, {scrollTo: {y: pageHeight * $currentSlide.index() }});
+
       goToSlide($currentSlide);
     }
 
