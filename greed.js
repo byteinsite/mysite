@@ -220,33 +220,3 @@ function resize(renderer) {
   }
   return needResize;
 }
-
-// function mousemove(e) {
-
-//   mouseX = (e.clientX - width/2);
-
-// }
-
-// function moveCamera() {
-
-//   // camera.position.x = mouseX/width * 6;
-
-//     if (warpSpeed) {
-//       // if (rotateZ > -50) rotateZ -= 5;
-//       // if (speed<100) speed +=1;
-//       if (rotateY < 50) rotateY += 0.5;
-//       camera.lookAt(0, rotateY, 0);
-
-//       } else { 
-//         // speed = 4;
-//         if (rotateY > 1.5) {
-//           // speed -=1;
-//           rotateY -= 0.5;
-//           camera.lookAt(0, rotateY, 0);
-//         } else {
-//           camera.lookAt(0, 1.5, 0);
-//         }
-//       }
-
-
-// }
